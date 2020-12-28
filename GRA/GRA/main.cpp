@@ -5,7 +5,9 @@ int main()
 {
     sf::RenderWindow window(sf::VideoMode(200,200), "GRA",sf::Style::Fullscreen);
 
-    Gracz gracz(10.0f, 100.0f);
+    float predkoscGracza = 10.0f;
+
+    Gracz gracz(predkoscGracza, 100.0f);
     gracz.ustawPozycje(sf::Vector2f(200.0f, 300.0f));
     sf::Vector2f kierunek;
 
@@ -20,6 +22,7 @@ int main()
                 window.close();
             if (sf::Keyboard::isKeyPressed(sf::Keyboard::Escape))
                 window.close();
+        }
             if (sf::Keyboard::isKeyPressed(sf::Keyboard::A))
             {
                 kierunek.x = -1.0f;
@@ -44,9 +47,11 @@ int main()
                 kierunek.y = 1.0f;
                 gracz.zmienPozycje(kierunek);
             }
-            if (sf::Keyboard::isKeyPressed(sf::Keyboard::LShift))
-                gracz.biegnij();
-        }
+
+            if (event.type == sf::Event::KeyPressed && event.key.code == sf::Keyboard::LShift)
+                gracz.zmienPredkosc(predkoscGracza * 2.0);
+            if (event.type == sf::Event::KeyReleased && event.key.code == sf::Keyboard::LShift)
+                gracz.zmienPredkosc(predkoscGracza);
 
         window.clear();
         gracz.aktualizuj(window);

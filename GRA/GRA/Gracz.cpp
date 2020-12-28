@@ -33,14 +33,6 @@ void Gracz::zmienPozycje(sf::Vector2f kierunek)
     pozycja.y += predkosc * kierunek.y;
 }
 
-void Gracz::biegnij()
-{
-    sf::Clock zegar;
-    sf::Time uplynelo = zegar.getElapsedTime();
-    while (uplynelo.asSeconds() <= czasSprintu)
-        predkosc *= 2;
-}
-
 void Gracz::ustawPozycje(sf::Vector2f wspolrzedne)
 {
     pozycja.x = wspolrzedne.x;

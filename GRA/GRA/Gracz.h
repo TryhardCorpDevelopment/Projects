@@ -8,6 +8,7 @@ private:
     float stamina;
     float czasSprintu;
     sf::Vector2f pozycja;
+    bool czyBiegnie;
 
     sf::Texture tekstura;
     sf::Sprite sprite;
@@ -20,7 +21,6 @@ public:
 
     void aktualizuj(sf::RenderWindow& okno);
     void zmienPozycje(sf::Vector2f kierunek);
-    void biegnij();
     void ustawPozycje(sf::Vector2f wspolrzedne);
     void zmienPredkosc(float nowaPredkosc);
     void zmienStamine(float nowaStamina);
