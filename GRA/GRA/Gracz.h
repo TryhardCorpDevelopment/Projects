@@ -16,7 +16,7 @@ private:
     //Dodac obiekt klasy z ekwipunkiem
 
 public:
-    Gracz(float predkosc, float stamina);
+    Gracz(float predkoscGracza, float stamina);
 
     void aktualizuj(sf::RenderWindow& okno);
     void zmienPozycje(sf::Vector2f kierunek);
