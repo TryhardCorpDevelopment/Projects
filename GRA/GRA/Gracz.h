@@ -1,3 +1,6 @@
+#include <SFML/Graphics.hpp>
+#include <string>
+
 class Gracz
 {
 private:
@@ -14,8 +17,11 @@ private:
 
 public:
     Gracz(float predkosc, float stamina);
+
+    void aktualizuj(sf::RenderWindow& okno);
+    void zmienPozycje(sf::Vector2f kierunek);
+    void biegnij();
+    void ustawPozycje(sf::Vector2f wspolrzedne);
     void zmienPredkosc(float nowaPredkosc);
     void zmienStamine(float nowaStamina);
-    void aktualizuj(sf::Vector2u, sf::Window& okno);
-    void biegnij();
 };
