@@ -1,12 +1,52 @@
+#include <string>
 #include "Gracz.h"
 #include "map.h"
 
-Gracz::Gracz(float predkosc, float stamina)
+Gracz::Gracz(float predkoscGracza, float stamina)
 {
-    tekstura.loadFromFile("nazwaPliku");
+    tekstura.loadFromFile("C:\\Users\\macie\\Desktop\\Maciek\\C++\\GRA\\Projects\\GRA\\GRA\\resources\\tekstury\\gracz.jpg");
     sprite.setTexture(tekstura);
 
+    predkosc = predkoscGracza;
     czasSprintu = stamina / predkosc;
+}
+
+void Gracz::aktualizuj(sf::RenderWindow& okno)
+{
+    sprite.setPosition(pozycja.x, pozycja.y);
+
+    sf::Vector2f XY;
+    XY = sprite.getPosition();
+
+    pozycja.x = XY.x;
+    pozycja.y = XY.y;
+
+    okno.draw(sprite);
+}
+
+void Gracz::zmienPozycje(sf::Vector2f kierunek)
+{
+    /*pozycja.x += predkosc * kierunek.x;
+    pozycja.y += predkosc * kierunek.y;*/
+
+    pozycja.x += predkosc * kierunek.x;
+    pozycja.y += predkosc * kierunek.y;
+}
+
+void Gracz::biegnij()
+{
+    sf::Clock zegar;
+    sf::Time uplynelo = zegar.getElapsedTime();
+    while (uplynelo.asSeconds() <= czasSprintu)
+        predkosc *= 2;
+}
+
+void Gracz::ustawPozycje(sf::Vector2f wspolrzedne)
+{
+    pozycja.x = wspolrzedne.x;
+    pozycja.y = wspolrzedne.y;
+
+    //sprite.setPosition(pozycja.x, pozycja.y);
 }
 
 void Gracz::zmienPredkosc(float nowaPredkosc)
@@ -17,20 +57,4 @@ void Gracz::zmienPredkosc(float nowaPredkosc)
 void Gracz::zmienStamine(float nowaStamina)
 {
     stamina = nowaStamina;
-}
-
-void Gracz::aktualizuj(sf::Vector2u kierunek, sf::Window& okno)
-{
-    pozycja.x += predkosc * kierunek.x;
-    pozycja.y += predkosc * kierunek.y;
-
-    okno.draw(sprite);
-}
-
-void Gracz::biegnij()
-{
-    sf::Clock zegar;
-    sf::Time uplynelo = zegar.getElapsedTime();
-    while (uplynelo.asSeconds() <= czasSprintu)
-        predkosc *= 2;
 }
