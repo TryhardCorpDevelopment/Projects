@@ -4,20 +4,22 @@
 int main()
 {
     sf::RenderWindow window(sf::VideoMode(200,200), "GRA",sf::Style::Fullscreen);
+
     sf::Vector2f rozmiarEkranu = (sf::Vector2f) window.getSize();
+    sf::Vector2f kierunek;
 
     float predkoscGracza = 10.0f;
 
     Gracz gracz(100, predkoscGracza, 100.0f);
     gracz.ustaw(rozmiarEkranu, sf::Vector2f(200.0f, 300.0f));
-    sf::Vector2f kierunek;
+
 
     window.setVerticalSyncEnabled(true);
     window.setFramerateLimit(60);
     while (window.isOpen())
     {
         sf::Event event;
-        while ( window.pollEvent( event ))
+        while (window.pollEvent(event))
         {
             if (event.type == sf::Event::Closed)
                 window.close();
@@ -54,11 +56,15 @@ int main()
             if (event.type == sf::Event::KeyReleased && event.key.code == sf::Keyboard::LShift)
                 gracz.poruszanie(predkoscGracza);
 
+            if (event.type == sf::Event::KeyPressed && event.key.code == sf::Keyboard::LShift)
+                gracz.poruszanie(predkoscGracza * 2.0);
+            if (event.type == sf::Event::KeyReleased && event.key.code == sf::Keyboard::LShift)
+                gracz.poruszanie(predkoscGracza);
+
+
         window.clear();
         gracz.aktualizuj(window);
         window.display();
     }
-
-
     return 0;
 }
