@@ -39,13 +39,18 @@ void Gracz::aktualizuj(sf::RenderWindow& okno)
 
 void Gracz::przesun(sf::Vector2f ekran, sf::Vector2f kierunek)
 {
-    if (czyMoznaPrzesunac(ekran))
+    if (czyMoznaPrzesunac(ekran, kierunek))
         zmienPozycje(kierunek);
 }
 
-bool Gracz::czyMoznaPrzesunac(sf::Vector2f ekran)
+bool Gracz::czyMoznaPrzesunac(sf::Vector2f ekran, sf::Vector2f kierunek)
 {
-    return (pozycja.x >= 0 && pozycja.x <= ekran.x) && (pozycja.y >= 0 && pozycja.y <= ekran.y);
+    float odlegloscX = predkosc * kierunek.x;
+    float odlegloscY = predkosc * kierunek.y;
+
+    if (pozycja.x + odlegloscX >= 0 && pozycja.x + odlegloscX <= ekran.x - tekstura.getSize().x)
+        if (pozycja.y + odlegloscY >= 0 && pozycja.y + odlegloscY <= ekran.y - tekstura.getSize().y)
+            return true;
 }
 
 void Gracz::zmienPozycje(sf::Vector2f kierunek)
@@ -56,11 +61,16 @@ void Gracz::zmienPozycje(sf::Vector2f kierunek)
 
 void Gracz::ustaw(sf::Vector2f ekran, sf::Vector2f wspolrzedne)
 {
-    if (czyMoznaPrzesunac(ekran))
+    if (czyMoznaUstawic(ekran, wspolrzedne))
     {
         pozycja.x = wspolrzedne.x;
         pozycja.y = wspolrzedne.y;
     }
+}
+
+bool Gracz::czyMoznaUstawic(sf::Vector2f ekran, sf::Vector2f wspolrzedne)
+{
+    return (wspolrzedne.x >= 0 && wspolrzedne.x <= ekran.x - tekstura.getSize().x) && (wspolrzedne.y >= 0 && wspolrzedne.y <= ekran.y - tekstura.getSize().y);
 }
 
 void Gracz::poruszanie(float nowaPredkosc)

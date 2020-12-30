@@ -56,11 +56,6 @@ int main()
             if (event.type == sf::Event::KeyReleased && event.key.code == sf::Keyboard::LShift)
                 gracz.poruszanie(predkoscGracza);
 
-            if (event.type == sf::Event::KeyPressed && event.key.code == sf::Keyboard::LShift)
-                gracz.poruszanie(predkoscGracza * 2.0);
-            if (event.type == sf::Event::KeyReleased && event.key.code == sf::Keyboard::LShift)
-                gracz.poruszanie(predkoscGracza);
-
 
         window.clear();
         gracz.aktualizuj(window);

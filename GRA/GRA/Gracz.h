@@ -27,6 +27,7 @@ public:
     void kondycja(float nowaStamina);
 
 private:
-    bool czyMoznaPrzesunac(sf::Vector2f ekran);
+    bool czyMoznaPrzesunac(sf::Vector2f ekran, sf::Vector2f kierunek);
+    bool czyMoznaUstawic(sf::Vector2f ekran, sf::Vector2f wspolrzedne);
     void zmienPozycje(sf::Vector2f kierunek);
 };
