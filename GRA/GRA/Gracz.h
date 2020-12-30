@@ -4,6 +4,7 @@
 class Gracz
 {
 private:
+    int zycie;
     float predkosc;
     float stamina;
     float czasSprintu;
@@ -17,11 +18,15 @@ private:
     //Dodac obiekt klasy z ekwipunkiem
 
 public:
-    Gracz(float predkoscGracza, float stamina);
-
+    Gracz(int zycieGracza, float predkoscGracza, float staminaGracza);
+    void teksturaGracza();//<-string sciezka
     void aktualizuj(sf::RenderWindow& okno);
+    void przesun(sf::Vector2f ekran, sf::Vector2f kierunek);
+    void ustaw(sf::Vector2f ekran, sf::Vector2f wspolrzedne);
+    void poruszanie(float nowaPredkosc);
+    void kondycja(float nowaStamina);
+
+private:
+    bool czyMoznaPrzesunac(sf::Vector2f ekran);
     void zmienPozycje(sf::Vector2f kierunek);
-    void ustawPozycje(sf::Vector2f wspolrzedne);
-    void zmienPredkosc(float nowaPredkosc);
-    void zmienStamine(float nowaStamina);
 };
