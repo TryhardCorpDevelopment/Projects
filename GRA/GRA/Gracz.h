@@ -20,7 +20,7 @@ private:
 public:
     Gracz(int zycieGracza, float predkoscGracza, float staminaGracza);
     void teksturaGracza();//<-string sciezka
-    void aktualizuj(sf::RenderWindow& okno);
+    void aktualizuj(sf::RenderTexture& okno);
     void przesun(sf::Vector2f ekran, sf::Vector2f kierunek);
     void ustaw(sf::Vector2f ekran, sf::Vector2f wspolrzedne);
     void poruszanie(float nowaPredkosc);

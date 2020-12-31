@@ -24,7 +24,7 @@ void Gracz::teksturaGracza()//<- string sciezka
     sprite.setTexture(tekstura);
 }
 
-void Gracz::aktualizuj(sf::RenderWindow& okno)
+void Gracz::aktualizuj(sf::RenderTexture& okno)
 {
     sprite.setPosition(pozycja.x, pozycja.y);
 
