@@ -836,12 +836,12 @@
 1609165377 source:c:\users\macie\desktop\maciek\c++\gra\projects\gra\gra\map.cpp
 	"map.h"
 
-1609364048 source:c:\users\macie\desktop\maciek\c++\gra\projects\gra\gra\gracz.cpp
+1609411142 source:c:\users\macie\desktop\maciek\c++\gra\projects\gra\gra\gracz.cpp
 	<string>
 	"Gracz.h"
 	"map.h"
 
-1609364022 c:\users\macie\desktop\maciek\c++\gra\projects\gra\gra\gracz.h
+1609411142 c:\users\macie\desktop\maciek\c++\gra\projects\gra\gra\gracz.h
 	<SFML/Graphics.hpp>
 	<string>
 
