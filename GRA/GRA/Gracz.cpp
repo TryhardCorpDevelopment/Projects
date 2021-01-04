@@ -20,7 +20,8 @@ Gracz::Gracz(int zycieGracza, float predkoscGracza, float staminaGracza)
 
 void Gracz::teksturaGracza()//<- string sciezka
 {
-    tekstura.loadFromFile("C:\\Users\\macie\\Desktop\\Maciek\\C++\\GRA\\Projects\\GRA\\GRA\\resources\\tekstury\\najman_marcin.jpg");//<- sciezka statyczna (tymczasowo)
+    //tekstura.loadFromFile("C:\\Users\\macie\\Desktop\\Maciek\\C++\\GRA\\Projects\\GRA\\GRA\\resources\\tekstury\\najman_marcin.jpg");//<- sciezka statyczna (tymczasowo)
+    tekstura.loadFromFile("resources\\tekstury\\najman_marcin.jpg");//<- sciezka statyczna (tymczasowo)
     sprite.setTexture(tekstura);
 }
 
