@@ -4,6 +4,7 @@
 #include <SFML/Graphics.hpp>
 #include <string>
 #include "Przedmiot.h"
+#include "GraczBuilder.h"
 
 class Gracz
 {
@@ -23,6 +24,11 @@ private:
     //Dodac obiekt klasy z ekwipunkiem
 
 public:
+    //static GraczBuilder builder;
+
+public:
+    //Gracz();
+    //Gracz(GraczBuilder builder);
     Gracz(std::string plik, int zycieGracza, float predkoscGracza, float staminaGracza);
     void teksturaGracza(std::string plik);
     void aktualizuj(sf::RenderTexture& okno);

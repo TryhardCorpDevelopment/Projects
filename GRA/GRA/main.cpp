@@ -17,6 +17,7 @@ int main()
     float predkoscGracza = 10.0f;
 
     std::string plikTekstura = "najman_marcin.jpg";
+    //Gracz gracz = Gracz::builder(plikTekstura)::predkosc(200.0f)::zycie(300.0f)::build();
     Gracz gracz(plikTekstura, 100, predkoscGracza, 100.0f);
     gracz.ustaw(rozmiarEkranu, sf::Vector2f(200.0f, 300.0f));
 

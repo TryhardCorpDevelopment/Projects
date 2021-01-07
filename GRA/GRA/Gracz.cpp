@@ -32,6 +32,17 @@ Gracz::Gracz(std::string plik, int zycieGracza, float predkoscGracza, float stam
     teksturaGracza(plik);
 }
 
+//Gracz::Gracz() {}
+
+// Gracz::Gracz(GraczBuilder builder)
+// {
+//     zycie = builder.zycie;
+//     predkosc = builder.predkosc;
+//     stamina = builder.stamina;
+//     pozycja.x = builder.pozycja.x;
+//     pozycja.y = builder.pozycja.y;
+// }
+
 void Gracz::teksturaGracza(std::string plik)
 {
     std::string sciezka = "resources/tekstury/" + plik;
