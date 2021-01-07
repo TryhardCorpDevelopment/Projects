@@ -1,0 +1,74 @@
+Gracz.h -- klasa grupujacą wartości związane z graczem oraz podstawowe operacje na graczu
+
+Atrybuty:
+a) prywatne:
+    int zycie --> poziom życia gracza
+    float predkosc --> prędkość poruszania gracza (w pikselach)
+    float stamina --> ilość pikseli, jakie może przebiec gracz
+    float czasSprintu --> czas, przez jaki może biec gracz
+    sf::Vector2f pozycja --> współrzędne gracza przechowywane jako Vector
+    bool czyBiegnie --> zmienna określająca, czy gracz biegnie w danym momencie
+    sf::Texture tekstura --> tekstura gracza
+    sf::Sprite sprite --> sprite gracza
+
+b)
+    publiczne:
+    BRAK
+
+
+Metody:
+a) publiczne:
+    Gracz(std::string plik, int zycieGracza, float predkoscGracza, float staminaGracza) --
+        publiczny konstruktor obiektu gracza;
+        plik -- nazwa pliku z teksturą gracza
+        zycieGracza - poziom życia gracza
+        predkoscGracza - prędkośc poruszania gracza
+        staminaGracza - ilość pikseli, jaką można przebiec
+
+    void teksturaGracza(std::string plik) -- wczytuje teksturę gracza z podanego pliku
+        plik -- nazwa pliku z teksturą gracza
+
+    void aktualizuj(sf::RenderTexture& okno) -- aktualizuje pozycję gracza i rysuje go do bufora
+        okno - bufor przekazany przez referencję
+
+    void przesun(sf::Vector2f ekran, sf::Vector2f kierunek) -- zmienia kordynaty
+        pozycji gracza na ekranie;
+        ekran -- rozmiar ekranu (bufora) w postaci Vectora
+        kierunek -- określa kierunek poruszania:
+            x = 1 --> w prawo
+            x = -1 --> w lewo
+            y = 1 --> w dół
+            y = -1 --> w górę
+
+    void ustaw(sf::Vector2f ekran, sf::Vector2f wspolrzedne) -- ustawia
+        początkowe współrzędne gracza na ekranie;
+        ekran -- rozmiar ekranu (bufora) jako Vector
+        wspolrzedne -- wartości początkowych współrzędnych
+
+    void poruszanie(float nowaPredkosc) -- ustawia prędkość gracza
+        nowaPredkosc -- prędkość gracza w pikselach
+
+    void kondycja(float nowaStamina) -- ustawia ilość staminy gracza
+        nowaStamina -- liczba pikseli, jakie może przebiec gracz
+
+b) prywatne:
+    bool czyMoznaPrzesunac(sf::Vector2f ekran, sf::Vector2f kierunek) -- sprawdza,
+        czy można przesunąć gracza na ekranie o podane kordynaty;
+        ekran -- rozmiar ekranu (bufora)
+        kierunek -- kierunek poruszania gracza:
+            x = 1 --> w prawo
+            x = -1 --> w lewo
+            y = 1 --> w dół
+            y = -1 --> w górę
+
+    bool czyMoznaUstawic(sf::Vector2f ekran, sf::Vector2f wspolrzedne) -- sprawdza,
+        czy można zmienić pozycję gracza na ekranie o podane wartości;
+        ekran -- rozmiar ekranu (bufora)
+        wspolrzedne -- wartości, o jakie ma zostać przesunięty gracz
+
+    bool zmienPozycje(sf::Vector2f kierunek) -- zmienia aktualną pozycję gracza
+        kierunek -- określa kierunek poruszania się gracza:
+            x = 1 --> w prawo
+            x = -1 --> w lewo
+            y = 1 --> w dół
+            y = -1 --> w górę
