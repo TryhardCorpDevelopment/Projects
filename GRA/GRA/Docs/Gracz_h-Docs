@@ -5,7 +5,6 @@ a) prywatne:
     int zycie --> poziom życia gracza
     float predkosc --> prędkość poruszania gracza (w pikselach)
     float stamina --> ilość pikseli, jakie może przebiec gracz
-    float czasSprintu --> czas, przez jaki może biec gracz
     sf::Vector2f pozycja --> współrzędne gracza przechowywane jako Vector
     bool czyBiegnie --> zmienna określająca, czy gracz biegnie w danym momencie
     sf::Texture tekstura --> tekstura gracza
