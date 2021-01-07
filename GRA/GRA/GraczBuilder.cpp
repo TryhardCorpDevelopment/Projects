@@ -50,9 +50,9 @@ void GraczBuilder::pozycja(sf::Vector2f ekran, sf::Vector2f wspolrzedne) const o
         this->gracz->pozycja.y = wspolrzedne.y;
 }
 
-Gracz* GraczBuilder::build()
-{
-    Gracz* wynikowyGracz = this->gracz;
-    this->resetuj();
-    return wynikowyGracz;
-}
+// Gracz* GraczBuilder::build()
+// {
+//     Gracz* wynikowyGracz = this->gracz;
+//     this->resetuj();
+//     return wynikowyGracz;
+// }

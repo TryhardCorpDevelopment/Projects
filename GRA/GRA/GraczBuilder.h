@@ -8,7 +8,7 @@
 class GraczBuilder: public Builder
 {
 private:
-    Gracz* gracz;
+    //Gracz* gracz;
 
 public:
     GraczBuilder(std::string plik );
@@ -19,7 +19,7 @@ public:
     void predkosc(float predkoscGracza);
     void stamina(float staminaGracza);
     void pozycja(sf::Vector2f ekran, sf::Vector2f wspolrzedne);
-    Gracz* build();
+    //Gracz* build();
 
 private:
     bool czyMoznaUstawic(sf::Vector2f ekran, sf::Vector2f wspolrzedne);
