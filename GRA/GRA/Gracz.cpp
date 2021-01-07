@@ -136,3 +136,28 @@ void Gracz::kondycja(float nowaStamina)
         std::cout << e.what() << std::endl;
     }
 }
+
+int Gracz::getZycie()
+{
+    return zycie;
+}
+
+float Gracz::getPredkosc()
+{
+    return predkosc;
+}
+
+float Gracz::getStamina()
+{
+    return stamina;
+}
+
+sf::Vector2f Gracz::getPozycja()
+{
+    return pozycja;
+}
+
+sf::Vector2f Gracz::getRozmiar()
+{
+    return (sf::Vector2f)tekstura.getSize();
+}

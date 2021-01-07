@@ -27,6 +27,11 @@ public:
     void ustaw(sf::Vector2f ekran, sf::Vector2f wspolrzedne);
     void poruszanie(float nowaPredkosc);
     void kondycja(float nowaStamina);
+    int getZycie();
+    float getPredkosc();
+    float getStamina();
+    sf::Vector2f getPozycja();
+    sf::Vector2f getRozmiar();
 
 private:
     bool czyMoznaPrzesunac(sf::Vector2f ekran, sf::Vector2f kierunek);
