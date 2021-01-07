@@ -1,3 +1,6 @@
+#ifndef Gracz_h
+#define Gracz_h
+
 #include <SFML/Graphics.hpp>
 #include <string>
 
@@ -7,7 +10,6 @@ private:
     int zycie;
     float predkosc;
     float stamina;
-    float czasSprintu;
     sf::Vector2f pozycja;
     bool czyBiegnie;
 
@@ -18,8 +20,8 @@ private:
     //Dodac obiekt klasy z ekwipunkiem
 
 public:
-    Gracz(int zycieGracza, float predkoscGracza, float staminaGracza);
-    void teksturaGracza();//<-string sciezka
+    Gracz(std::string plik, int zycieGracza, float predkoscGracza, float staminaGracza);
+    void teksturaGracza(std::string plik);
     void aktualizuj(sf::RenderTexture& okno);
     void przesun(sf::Vector2f ekran, sf::Vector2f kierunek);
     void ustaw(sf::Vector2f ekran, sf::Vector2f wspolrzedne);
@@ -31,3 +33,5 @@ private:
     bool czyMoznaUstawic(sf::Vector2f ekran, sf::Vector2f wspolrzedne);
     void zmienPozycje(sf::Vector2f kierunek);
 };
+
+#endif

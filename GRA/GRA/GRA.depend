@@ -417,7 +417,7 @@
 1608933147 source:c:\users\bartek\desktop\gra\gra\map.cpp
 	"map.h"
 
-1609363110 source:c:\users\macie\desktop\maciek\c++\gra\projects\gra\gra\main.cpp
+1609418253 source:c:\users\macie\desktop\maciek\c++\gra\projects\gra\gra\main.cpp
 	"map.h"
 	"Gracz.h"
 
@@ -841,7 +841,7 @@
 	"Gracz.h"
 	"map.h"
 
-1609411142 c:\users\macie\desktop\maciek\c++\gra\projects\gra\gra\gracz.h
+1609418253 c:\users\macie\desktop\maciek\c++\gra\projects\gra\gra\gracz.h
 	<SFML/Graphics.hpp>
 	<string>
 

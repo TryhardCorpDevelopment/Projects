@@ -3,7 +3,7 @@
 
 int main()
 {
-    sf::RenderWindow window(sf::VideoMode(200, 200), "GRA",sf::Style::Fullscreen);
+    sf::RenderWindow window(sf::VideoMode(1920, 1080), "GRA");
 
     sf::Vector2f rozmiarEkranu = (sf::Vector2f) window.getSize();
     unsigned int bufferX = rozmiarEkranu.x, bufferY = rozmiarEkranu.y;
@@ -15,11 +15,12 @@ int main()
 
     float predkoscGracza = 10.0f;
 
-    Gracz gracz(100, predkoscGracza, 100.0f);
+    std::string plikTekstura = "najman_marcin.jpg";
+    Gracz gracz(plikTekstura, 100, predkoscGracza, 100.0f);
     gracz.ustaw(rozmiarEkranu, sf::Vector2f(200.0f, 300.0f));
 
     window.setVerticalSyncEnabled(true);
-    window.setFramerateLimit(60);
+    window.setFramerateLimit(200);
     window.setPosition(sf::Vector2i(0, 0));
     while (window.isOpen())
     {
