@@ -1,27 +1,40 @@
-#include <string>
+#include "SFML/Graphics.hpp"
 #include "Gracz.h"
 #include "map.h"
+#include <string>
+#include <iostream>
 
-Gracz::Gracz(int zycieGracza, float predkoscGracza, float staminaGracza)
+Gracz::Gracz(std::string plik, int zycieGracza, float predkoscGracza, float staminaGracza)
 {
-    if (zycieGracza > 100)
-        zycie = zycieGracza;
+    try
+    {
+        if (zycieGracza >= 100)
+            zycie = zycieGracza;
+        else
+            throw std::invalid_argument("Niepoprawna wartosc zycia gracza");
 
-    if (predkoscGracza > 0.0f)
-        predkosc = predkoscGracza;
+        if (predkoscGracza > 0.0f)
+            predkosc = predkoscGracza;
+        else
+            throw std::invalid_argument("Niepoprawna wartosc predkosci gracza");
 
-    if (staminaGracza > 0.0f)
-        stamina = staminaGracza;
+        if (staminaGracza > 0.0f)
+            stamina = staminaGracza;
+        else
+            throw std::invalid_argument("Niepoprawna wartosc staminy gracza");
+    }
+    catch (std::invalid_argument& e)
+    {
+        std::cout << e.what() << std::endl;
+    }
 
-    czasSprintu = stamina / predkosc;
-
-    teksturaGracza();
+    teksturaGracza(plik);
 }
 
-void Gracz::teksturaGracza()//<- string sciezka
+void Gracz::teksturaGracza(std::string plik)
 {
-    //tekstura.loadFromFile("C:\\Users\\macie\\Desktop\\Maciek\\C++\\GRA\\Projects\\GRA\\GRA\\resources\\tekstury\\najman_marcin.jpg");//<- sciezka statyczna (tymczasowo)
-    tekstura.loadFromFile("resources\\tekstury\\najman_marcin.jpg");//<- sciezka statyczna (tymczasowo)
+    std::string sciezka = "resources/tekstury/" + plik;
+    tekstura.loadFromFile(sciezka);
     sprite.setTexture(tekstura);
 }
 
@@ -40,8 +53,17 @@ void Gracz::aktualizuj(sf::RenderTexture& okno)
 
 void Gracz::przesun(sf::Vector2f ekran, sf::Vector2f kierunek)
 {
-    if (czyMoznaPrzesunac(ekran, kierunek))
-        zmienPozycje(kierunek);
+    try
+    {
+        if (czyMoznaPrzesunac(ekran, kierunek))
+            zmienPozycje(kierunek);
+        else
+            throw std::invalid_argument("Nie mozna przesunac gracza o podane wartosci");
+    }
+    catch (std::invalid_argument& e)
+    {
+        std::cout << e.what() << std::endl;
+    }
 }
 
 bool Gracz::czyMoznaPrzesunac(sf::Vector2f ekran, sf::Vector2f kierunek)
@@ -52,6 +74,8 @@ bool Gracz::czyMoznaPrzesunac(sf::Vector2f ekran, sf::Vector2f kierunek)
     if (pozycja.x + odlegloscX >= 0 && pozycja.x + odlegloscX <= ekran.x - tekstura.getSize().x)
         if (pozycja.y + odlegloscY >= 0 && pozycja.y + odlegloscY <= ekran.y - tekstura.getSize().y)
             return true;
+
+    return false;
 }
 
 void Gracz::zmienPozycje(sf::Vector2f kierunek)
@@ -62,10 +86,19 @@ void Gracz::zmienPozycje(sf::Vector2f kierunek)
 
 void Gracz::ustaw(sf::Vector2f ekran, sf::Vector2f wspolrzedne)
 {
-    if (czyMoznaUstawic(ekran, wspolrzedne))
+    try
     {
-        pozycja.x = wspolrzedne.x;
-        pozycja.y = wspolrzedne.y;
+        if (czyMoznaUstawic(ekran, wspolrzedne))
+        {
+            pozycja.x = wspolrzedne.x;
+            pozycja.y = wspolrzedne.y;
+        }
+        else
+            throw std::invalid_argument("Nie mozna ustawic gracza na podanej pozycji");
+    }
+    catch (std::invalid_argument& e)
+    {
+        std::cout << e.what() << std::endl;
     }
 }
 
@@ -76,12 +109,30 @@ bool Gracz::czyMoznaUstawic(sf::Vector2f ekran, sf::Vector2f wspolrzedne)
 
 void Gracz::poruszanie(float nowaPredkosc)
 {
-    if (nowaPredkosc > 0.0f)
-        predkosc = nowaPredkosc;
+    try
+    {
+        if (nowaPredkosc > 0.0f)
+            predkosc = nowaPredkosc;
+        else
+            throw std::invalid_argument("Podana predkosc jest mniejsza od 0");
+    }
+    catch (std::invalid_argument& e)
+    {
+        std::cout << e.what() << std::endl;
+    }
 }
 
 void Gracz::kondycja(float nowaStamina)
 {
-    if (nowaStamina > 0.0f)
-        stamina = nowaStamina;
+    try
+    {
+        if (nowaStamina > 0.0f)
+            stamina = nowaStamina;
+        else
+            throw std::invalid_argument("Podana wartosc staminy jest mniejsza od 0");
+    }
+    catch (std::invalid_argument& e)
+    {
+        std::cout << e.what() << std::endl;
+    }
 }
