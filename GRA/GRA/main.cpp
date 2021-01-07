@@ -1,5 +1,6 @@
 #include "map.h"
 #include "Gracz.h"
+#include "Przedmiot.h"
 
 int main()
 {

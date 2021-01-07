@@ -1,5 +1,6 @@
 #include "SFML/Graphics.hpp"
 #include "Gracz.h"
+#include "Przedmiot.h"
 #include "map.h"
 #include <string>
 #include <iostream>
