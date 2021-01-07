@@ -3,6 +3,7 @@
 
 #include <SFML/Graphics.hpp>
 #include <string>
+#include "Przedmiot.h"
 
 class Gracz
 {
@@ -15,6 +16,8 @@ private:
 
     sf::Texture tekstura;
     sf::Sprite sprite;
+
+    Przedmiot ekwipunek[4];
 
     //Dodac obiekt klasy z animacjami
     //Dodac obiekt klasy z ekwipunkiem
