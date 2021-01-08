@@ -20,7 +20,7 @@ int main()
 
     GraczBuilder builder(plikTekstura);
     Gracz gracz = builder.predkosc(10.0f).zycie(300.0f).build();
-    //Gracz gracz(plikTekstura, 100, predkoscGracza, 100.0f);
+    
     gracz.ustaw(rozmiarEkranu, sf::Vector2f(200.0f, 300.0f));
 
     window.setVerticalSyncEnabled(true);
