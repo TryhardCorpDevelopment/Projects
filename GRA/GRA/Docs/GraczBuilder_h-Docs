@@ -1,0 +1,58 @@
+GraczBuilder.h -- klasa implementująca wzorzec Budowniczego dla klasy Gracz.h
+
+Atrybuty:
+a) prywatne:
+    std::string plikTekstury --> nazwa pliku z teksturą Gracza
+    int zycieGracza --> ilość życia Gracza
+    float predkoscGracza --> prędkość Gracza w pikselach
+    float staminaGracza --> ilość pikseli, jaką może przebiec Gracz
+    sf::Vector2f pozycjaGracza --> Vector przechowujący pozycję Gracza
+    bool czyBiegnie --> zmienna prawda/fałsz informująca, czy Gracz aktualnie biegnie
+
+b) publiczne:
+    BRAK
+
+Metody:
+a) publiczne:
+    GraczBuilder(std::string plik) -- konstruktor publiczny, określa plik z teksturą Gracza
+    oraz inicjuje wartości domyślne dla życia, prędkości, staminy, pozycji
+    i statusu biegu Gracza - odpowiednio: 100.0f, 10.0f, 100.0f, (x=0.0f, y=0.0f), false;
+        plik -- nazwa pliku z teksturą
+
+    GraczBuilder& zycie(int zycieGracza) -- ustawia ilość życia Gracza;
+        zycieGracza -- ilość życia Gracza
+
+    GraczBuilder& predkosc(float predkoscGracza) -- ustawia prędkość Gracza;
+        predkoscGracza -- wartość prędkości poruszania Gracza
+
+    GraczBuilder& stamina(float staminaGracza) -- ustawia wartość staminy Gracza;
+        staminaGracza -- wartość staminy
+
+    GraczBuilder& pozycja(sf::Vector2f wspolrzedne) -- ustawia pozycję Gracza;
+        wspolrzedne -- wektor przechowujący współrzędne do ustawienia
+
+    Gracz& build() -- zwraca nowy obiekt Gracza
+
+b) prywatne:
+    BRAK
+
+Przykład wykorzystania:
+
+#include "GraczBuiler.h"
+#include "Gracz.h"
+
+GraczBuilder builder("postac.jpg");
+Gracz gracz = builder.zycie(200)
+                        .stamina(500.0f)
+                        .pozycja(sf::Vector2f(1200.0f, 425.0f))
+                        .build();
+
+Powyższy przykład tworzy nowy obiekt klasy Gracz - gracz oraz ustawia dla niego następujące
+parametry:
+-- tekstura gracza znajduje się w pliku postac.jpg
+-- zycie o wartości 200
+-- staminę o wartości 500.0f
+-- pozycję w punkcie (1200.f, 425.0f)
+
+Pozostałe artybuty zostały zainicjowane wartościami domyślnymi (patrz opis publicznego
+konstruktora).
