@@ -40,7 +40,6 @@ public:
     sf::Vector2f getRozmiar();
 
 private:
-    //Gracz(std::string plik, int zycieGracza, float predkoscGracza, float staminaGracza, sf::Vector2f pozycja, bool Bieg);
     void ustaw(sf::Vector2f wspolrzedne);
     bool czyMoznaPrzesunac(sf::Vector2f ekran, sf::Vector2f kierunek);
     bool czyMoznaUstawic(sf::Vector2f ekran, sf::Vector2f wspolrzedne);
