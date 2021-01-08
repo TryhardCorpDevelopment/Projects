@@ -110,3 +110,28 @@ void Gracz::kondycja(float nowaStamina)
     else
         throw std::invalid_argument("Podana wartosc staminy jest mniejsza od 0");
 }
+
+int Gracz::getZycie()
+{
+    return zycie;
+}
+
+float Gracz::getPredkosc()
+{
+    return predkosc;
+}
+
+float Gracz::getStamina()
+{
+    return stamina;
+}
+
+sf::Vector2f Gracz::getPozycja()
+{
+    return pozycja;
+}
+
+sf::Vector2f Gracz::getRozmiar()
+{
+    return (sf::Vector2f)tekstura.getSize();
+}
