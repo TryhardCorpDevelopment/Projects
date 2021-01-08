@@ -5,43 +5,27 @@
 #include <string>
 #include <iostream>
 
-Gracz::Gracz(std::string plik, int zycieGracza, float predkoscGracza, float staminaGracza)
+Gracz::Gracz(std::string plik, int zycieGracza, float predkoscGracza, float staminaGracza, sf::Vector2f pozycjaGracza, bool bieg)
 {
-    try
-    {
-        if (zycieGracza >= 100)
-            zycie = zycieGracza;
-        else
-            throw std::invalid_argument("Niepoprawna wartosc zycia gracza");
+    if (zycieGracza >= 100)
+        zycie = zycieGracza;
+    else
+        throw std::invalid_argument("Niepoprawna wartosc zycia gracza");
 
-        if (predkoscGracza > 0.0f)
-            predkosc = predkoscGracza;
-        else
-            throw std::invalid_argument("Niepoprawna wartosc predkosci gracza");
+    if (predkoscGracza > 0.0f)
+        predkosc = predkoscGracza;
+    else
+        throw std::invalid_argument("Niepoprawna wartosc predkosci gracza");
 
-        if (staminaGracza > 0.0f)
-            stamina = staminaGracza;
-        else
-            throw std::invalid_argument("Niepoprawna wartosc staminy gracza");
-    }
-    catch (std::invalid_argument& e)
-    {
-        std::cout << e.what() << std::endl;
-    }
+    if (staminaGracza > 0.0f)
+        stamina = staminaGracza;
+    else
+        throw std::invalid_argument("Niepoprawna wartosc staminy gracza");
 
+    czyBiegnie = bieg;
+    ustaw(pozycja);
     teksturaGracza(plik);
 }
-
-//Gracz::Gracz() {}
-
-// Gracz::Gracz(GraczBuilder builder)
-// {
-//     zycie = builder.zycie;
-//     predkosc = builder.predkosc;
-//     stamina = builder.stamina;
-//     pozycja.x = builder.pozycja.x;
-//     pozycja.y = builder.pozycja.y;
-// }
 
 void Gracz::teksturaGracza(std::string plik)
 {
@@ -65,17 +49,10 @@ void Gracz::aktualizuj(sf::RenderTexture& okno)
 
 void Gracz::przesun(sf::Vector2f ekran, sf::Vector2f kierunek)
 {
-    try
-    {
-        if (czyMoznaPrzesunac(ekran, kierunek))
-            zmienPozycje(kierunek);
-        else
-            throw std::invalid_argument("Nie mozna przesunac gracza o podane wartosci");
-    }
-    catch (std::invalid_argument& e)
-    {
-        std::cout << e.what() << std::endl;
-    }
+    if (czyMoznaPrzesunac(ekran, kierunek))
+        zmienPozycje(kierunek);
+    else
+        throw std::invalid_argument("Nie mozna przesunac gracza o podane wartosci");
 }
 
 bool Gracz::czyMoznaPrzesunac(sf::Vector2f ekran, sf::Vector2f kierunek)
@@ -96,22 +73,21 @@ void Gracz::zmienPozycje(sf::Vector2f kierunek)
     pozycja.y += predkosc * kierunek.y;
 }
 
+void Gracz::ustaw(sf::Vector2f wspolrzedne)
+{
+    pozycja.x = wspolrzedne.x;
+    pozycja.y = wspolrzedne.y;
+}
+
 void Gracz::ustaw(sf::Vector2f ekran, sf::Vector2f wspolrzedne)
 {
-    try
+    if (czyMoznaUstawic(ekran, wspolrzedne))
     {
-        if (czyMoznaUstawic(ekran, wspolrzedne))
-        {
-            pozycja.x = wspolrzedne.x;
-            pozycja.y = wspolrzedne.y;
-        }
-        else
-            throw std::invalid_argument("Nie mozna ustawic gracza na podanej pozycji");
+        pozycja.x = wspolrzedne.x;
+        pozycja.y = wspolrzedne.y;
     }
-    catch (std::invalid_argument& e)
-    {
-        std::cout << e.what() << std::endl;
-    }
+    else
+        throw std::invalid_argument("Nie mozna ustawic gracza na podanej pozycji");
 }
 
 bool Gracz::czyMoznaUstawic(sf::Vector2f ekran, sf::Vector2f wspolrzedne)
@@ -121,30 +97,16 @@ bool Gracz::czyMoznaUstawic(sf::Vector2f ekran, sf::Vector2f wspolrzedne)
 
 void Gracz::poruszanie(float nowaPredkosc)
 {
-    try
-    {
-        if (nowaPredkosc > 0.0f)
-            predkosc = nowaPredkosc;
-        else
-            throw std::invalid_argument("Podana predkosc jest mniejsza od 0");
-    }
-    catch (std::invalid_argument& e)
-    {
-        std::cout << e.what() << std::endl;
-    }
+    if (nowaPredkosc > 0.0f)
+        predkosc = nowaPredkosc;
+    else
+        throw std::invalid_argument("Podana predkosc jest mniejsza od 0");
 }
 
 void Gracz::kondycja(float nowaStamina)
 {
-    try
-    {
-        if (nowaStamina > 0.0f)
-            stamina = nowaStamina;
-        else
-            throw std::invalid_argument("Podana wartosc staminy jest mniejsza od 0");
-    }
-    catch (std::invalid_argument& e)
-    {
-        std::cout << e.what() << std::endl;
-    }
+    if (nowaStamina > 0.0f)
+        stamina = nowaStamina;
+    else
+        throw std::invalid_argument("Podana wartosc staminy jest mniejsza od 0");
 }

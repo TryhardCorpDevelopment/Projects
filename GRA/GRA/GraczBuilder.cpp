@@ -1,58 +1,50 @@
 #include "GraczBuilder.h"
-#include "Gracz.h"
-#include <string>
 
-GraczBuilder(std::string plik)
+GraczBuilder::GraczBuilder(std::string plik)
 {
-    this->resetuj();
-    this->tekstura(plik);
+    plikTekstury = plik;
+
+    zycieGracza = 100.0f;
+    predkoscGracza = 10.0f;
+    staminaGracza = 100.0f;
+    pozycjaGracza.x = 0.0f;
+    pozycjaGracza.y = 0.0f;
+    czyBiegnie = false;
 }
 
-GraczBuilder::resetuj()
+GraczBuilder& GraczBuilder::zycie(int zycie)
 {
-    this->gracz = new Gracz();
+    zycieGracza = zycie;
+    return *this;
 }
 
-GraczBuilder::~GraczBuilder()
+GraczBuilder& GraczBuilder::predkosc(float predkosc)
 {
-    delete gracz;
+    predkoscGracza = predkosc;
+    return *this;
 }
 
-void GraczBuilder::tekstura(std::string plik) const everride
+GraczBuilder& GraczBuilder::stamina(float stamina)
 {
-    std::string sciezka = "resources/tekstury/" + plik;
-    this->gracz->tekstura.loadFromFile(sciezka);
-    this->gracz->sprite.setTexture(this->gracz->tekstura);
+    staminaGracza = stamina;
+    return *this;
 }
 
-void GraczBuilder::zycie(int zycieGracza) const override
+GraczBuilder& GraczBuilder::pozycja(sf::Vector2f wspolrzedne)
 {
-    if (zycieGracza >= 100.0f)
-        this->gracz->zycie = zycieGracza;
+    pozycjaGracza.x = wspolrzedne.x;
+    pozycjaGracza.y = wspolrzedne.y;
+    return *this;
 }
 
-void GraczBuilder::predkosc(float predkoscGracza) const override
+GraczBuilder& GraczBuilder::bieg(bool bieg)
 {
-    if (predkoscGracza > 0.0f)
-        this->gracz->predkosc = predkoscGracza;
+    czyBiegnie = bieg;
+    return *this;
 }
 
-void GraczBuilder::stamina(float staminaGracza) const override
+Gracz& GraczBuilder::build()
 {
-    if (staminaGracza >= 100.0f)
-        this->gracz->stamina = staminaGracza;
+    Gracz* gracz = new Gracz(plikTekstury, zycieGracza, predkoscGracza, staminaGracza, pozycjaGracza, czyBiegnie);
+    return *gracz;
 }
-
-void GraczBuilder::pozycja(sf::Vector2f ekran, sf::Vector2f wspolrzedne) const override
-{
-    if (czyMoznaUstawic(ekran, wspolrzedne))
-        this->gracz->pozycja.x = wspolrzedne.x;
-        this->gracz->pozycja.y = wspolrzedne.y;
-}
-
-// Gracz* GraczBuilder::build()
-// {
-//     Gracz* wynikowyGracz = this->gracz;
-//     this->resetuj();
-//     return wynikowyGracz;
-// }

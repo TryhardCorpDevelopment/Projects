@@ -4,7 +4,6 @@
 #include <SFML/Graphics.hpp>
 #include <string>
 #include "Przedmiot.h"
-#include "GraczBuilder.h"
 
 class Gracz
 {
@@ -20,16 +19,14 @@ private:
 
     Przedmiot ekwipunek[4];
 
-    //Dodac obiekt klasy z animacjami
-    //Dodac obiekt klasy z ekwipunkiem
+    // Dodac obiekt klasy z animacjami
+    // Dodac obiekt klasy z ekwipunkiem
 
 public:
-    //static GraczBuilder builder;
+    // Brak
 
 public:
-    //Gracz();
-    //Gracz(GraczBuilder builder);
-    Gracz(std::string plik, int zycieGracza, float predkoscGracza, float staminaGracza);
+    Gracz(std::string plik, int zycieGracza, float predkoscGracza, float staminaGracza, sf::Vector2f pozycja, bool Bieg);
     void teksturaGracza(std::string plik);
     void aktualizuj(sf::RenderTexture& okno);
     void przesun(sf::Vector2f ekran, sf::Vector2f kierunek);
@@ -38,9 +35,13 @@ public:
     void kondycja(float nowaStamina);
 
 private:
+    //Gracz(std::string plik, int zycieGracza, float predkoscGracza, float staminaGracza, sf::Vector2f pozycja, bool Bieg);
+    void ustaw(sf::Vector2f wspolrzedne);
     bool czyMoznaPrzesunac(sf::Vector2f ekran, sf::Vector2f kierunek);
     bool czyMoznaUstawic(sf::Vector2f ekran, sf::Vector2f wspolrzedne);
     void zmienPozycje(sf::Vector2f kierunek);
 };
+
+
 
 #endif
