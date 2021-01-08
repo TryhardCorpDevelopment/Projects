@@ -37,12 +37,6 @@ GraczBuilder& GraczBuilder::pozycja(sf::Vector2f wspolrzedne)
     return *this;
 }
 
-GraczBuilder& GraczBuilder::bieg(bool bieg)
-{
-    czyBiegnie = bieg;
-    return *this;
-}
-
 Gracz& GraczBuilder::build()
 {
     Gracz* gracz = new Gracz(plikTekstury, zycieGracza, predkoscGracza, staminaGracza, pozycjaGracza, czyBiegnie);

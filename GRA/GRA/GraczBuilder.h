@@ -20,7 +20,6 @@ public:
     GraczBuilder& predkosc(float predkosc);
     GraczBuilder& stamina(float stamina);
     GraczBuilder& pozycja(sf::Vector2f wspolrzedne);
-    GraczBuilder& bieg(bool bieg);
     Gracz& build();
 };
 
